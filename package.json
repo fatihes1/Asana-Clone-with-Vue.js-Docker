@@ -1,0 +1,23 @@
+{
+  "name": "asana-clone-with-vue.js-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fatihes1/Asana-Clone-with-Vue.js-Docker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fatihes1/Asana-Clone-with-Vue.js-Docker/issues"
+  },
+  "homepage": "https://github.com/fatihes1/Asana-Clone-with-Vue.js-Docker#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
