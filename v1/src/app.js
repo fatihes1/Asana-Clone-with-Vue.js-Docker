@@ -15,5 +15,5 @@ app.use(helmet());
 
 app.listen(process.env.APP_PORT, () => {
     console.log("Sunucu ayağa kaldırıldı !");
-    app.use("/projects",ProjectRoutes.router);
+    app.use("/projects",ProjectRoutes);
 });

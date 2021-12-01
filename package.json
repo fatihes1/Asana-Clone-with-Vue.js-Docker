@@ -22,7 +22,9 @@
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "http-status": "^1.5.0",
-    "mongoose": "^6.0.14"
+    "joi": "^17.4.3",
+    "mongoose": "^6.0.14",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
