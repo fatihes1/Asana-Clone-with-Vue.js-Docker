@@ -1,6 +1,6 @@
 const express = require("express");
 const helmet = require("helmet");
-const { ProjectRoutes } = require("./api-routes");
+const { ProjectRoutes, UserRoutes} = require("./api-routes");
 
 const config = require("./config");
 const loaders = require("./loaders");
@@ -16,4 +16,5 @@ app.use(helmet());
 app.listen(process.env.APP_PORT, () => {
     console.log("Sunucu ayağa kaldırıldı !");
     app.use("/projects",ProjectRoutes);
+    app.use("/users",UserRoutes);
 });

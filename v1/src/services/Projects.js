@@ -1,8 +1,8 @@
 const Project = require("../models/Projects");
 
-const insert = (projectData) => {
+const insert = (data) => {
     // ... kayıt işlemleri yapılacak
-    const project = new Project(projectData);
+    const project = new Project(data);
     return project.save();
 };
 
