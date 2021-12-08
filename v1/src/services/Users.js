@@ -6,7 +6,7 @@ const insert = (data) => {
 };
 
 const loginUser = (loginData) => {
-    return User.findOne({ loginData });
+    return User.findOne(loginData);
 };
 
 const list = () => {
@@ -18,4 +18,4 @@ module.exports = {
     insert,
     list,
     loginUser,
-}
+};
