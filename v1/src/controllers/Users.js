@@ -18,9 +18,8 @@ const login = (req, res) => {
     loginUser(req.body)
     .then(user => {
         if(!user) return res.status(httpStatus.NOT_FOUND).send({ message : "Böyle bir kullanıcı bulunamadı." });
-        
         user = {
-            ...user,
+            ...user.toObject(),
             tokens : {
                 access_token : generateAccessToken(user),
                 refresh_token : generateRefreshToken(user),

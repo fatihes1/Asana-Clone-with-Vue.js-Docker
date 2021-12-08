@@ -3,13 +3,15 @@ const validate = require("../middlewares/validate");
 // validations tanıtımı
 const schemas = require("../validations/Projects");
 const express = require("express");
-const { create, index } = require("../controllers/Projects")
+const { create, index } = require("../controllers/Projects");
+const authenticateToken = require("../middlewares/authenticate");
 const router = express.Router();
 
-router.get("/", index);
+// index için token gerekiyor artık ! 
+router.route("/").get(authenticateToken, index);
 
 router
 .route("/")
-.post(validate(schemas.createValidation), create);
+.post(authenticateToken, validate(schemas.createValidation), create);
 
 module.exports = router;
