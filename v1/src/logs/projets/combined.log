@@ -4,3 +4,4 @@
 {"level":"info","message":{"_id":"61b1f68f787913216bc1f08d","createdAt":"2021-12-09T12:29:03.016Z","name":"FE Test Projesi 3","updatedAt":"2021-12-09T12:29:03.016Z"},"service":"project-service"}
 {"level":"info","message":{"_id":"61b1f692787913216bc1f08f","createdAt":"2021-12-09T12:29:06.321Z","name":"FE Test Projesi 4","updatedAt":"2021-12-09T12:29:06.321Z"},"service":"project-service"}
 {"level":"info","message":{"_id":"61b20f0f3319d11d05245cd1","createdAt":"2021-12-09T14:13:35.810Z","name":"FE Test Projesi 5","updatedAt":"2021-12-09T14:13:35.810Z","user_id":"61b1f56f787913216bc1f084"},"service":"project-service"}
+{"level":"info","message":{"_id":"61b23dcbfc5d0b8a384b324e","createdAt":"2021-12-09T17:32:59.863Z","name":"FE Test Projesi 6","updatedAt":"2021-12-09T17:32:59.863Z","user_id":"61b1f56f787913216bc1f084"},"service":"project-service"}

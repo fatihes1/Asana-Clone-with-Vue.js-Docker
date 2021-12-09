@@ -6,8 +6,8 @@ const insert = (data) => {
     return project.save();
 };
 
-const list = () => {
-    return Project.find({}).populate({
+const list = (where) => {
+    return Project.find(where || {}).populate({
         path : "user_id",
         select : "full_name email",
     });
