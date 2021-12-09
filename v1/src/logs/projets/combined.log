@@ -1,1 +1,6 @@
 {"level":"info","message":{"_id":"61a7de8249fb887564548f6d","createdAt":"2021-12-01T20:43:46.436Z","name":"Logger test","updatedAt":"2021-12-01T20:43:46.436Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"61b1f684787913216bc1f089","createdAt":"2021-12-09T12:28:52.705Z","name":"FE Test Projesi","updatedAt":"2021-12-09T12:28:52.705Z"},"service":"project-service"}
+{"level":"info","message":{"_id":"61b1f68b787913216bc1f08b","createdAt":"2021-12-09T12:28:59.900Z","name":"FE Test Projesi 2","updatedAt":"2021-12-09T12:28:59.900Z"},"service":"project-service"}
+{"level":"info","message":{"_id":"61b1f68f787913216bc1f08d","createdAt":"2021-12-09T12:29:03.016Z","name":"FE Test Projesi 3","updatedAt":"2021-12-09T12:29:03.016Z"},"service":"project-service"}
+{"level":"info","message":{"_id":"61b1f692787913216bc1f08f","createdAt":"2021-12-09T12:29:06.321Z","name":"FE Test Projesi 4","updatedAt":"2021-12-09T12:29:06.321Z"},"service":"project-service"}
+{"level":"info","message":{"_id":"61b20f0f3319d11d05245cd1","createdAt":"2021-12-09T14:13:35.810Z","name":"FE Test Projesi 5","updatedAt":"2021-12-09T14:13:35.810Z","user_id":"61b1f56f787913216bc1f084"},"service":"project-service"}
