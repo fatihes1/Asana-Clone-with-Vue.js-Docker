@@ -8,20 +8,28 @@ const insert = (data) => {
 
 const list = (where) => {
     return Project.find(where || {}).populate({
-        path : "user_id",
-        select : "full_name email",
+        path: "user_id",
+        select: "full_name email",
     });
 };
 
 const modify = (data, id) => {
-    return Project.findByIdAndUpdate(id, data, { new : true });
+    return Project.findByIdAndUpdate(id, data, {
+        new: true
+    });
     // return Project.findById(id).then(project => {
     //     project.name = data?.name;
     //     return project.save();
     // });
 };
+
+const remove = (id) => {
+    return Project.findByIdAndDelete(id)
+};
+
 module.exports = {
     insert,
     list,
-    modify
+    modify,
+    remove,
 };

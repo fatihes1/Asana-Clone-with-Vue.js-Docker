@@ -1,4 +1,4 @@
-const { insert, list, loginUser, modify } = require("../services/Users");
+const { insert, list, loginUser, modify, remove } = require("../services/Users");
 const projectService = require("../services/Projects");
 const httpStatus = require("http-status");
 const { passwordToHash, generateAccessToken, generateRefreshToken } = require("../scripts/utils/helper");
@@ -81,6 +81,22 @@ const update = (req, res) => {
     .catch(() => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error : "Güncelleme işlemi sırasında bir problem oluştu !"}));
 };
 
+const deleteUser = (req, res) => {
+    if(!req.params?.id){
+        return res.status(httpStatus.BAD_REQUEST).send({
+            message : "ID bilgisi eksik !"
+        });
+    };
+    remove(req.params?.id).then((deletedUser) => {
+        if(!deletedUser) {
+            return res.status(httpStatus.NOT_FOUND).send({
+                message : "Bu ID değerine sahip kullanıcı bulunmamaktadır. !"
+            });
+        };
+        res.status(httpStatus.OK).send({ message : "Belirtilen kullanıcı silinmiştir"});
+    }).catch(e => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error : "Kullanıcı silinirken bir sorunla karşılaşıldı."}));
+};
+
 module.exports = {
     create,
     index,
@@ -88,4 +104,5 @@ module.exports = {
     projectList,
     resetPassword,
     update,
+    deleteUser,
 };
