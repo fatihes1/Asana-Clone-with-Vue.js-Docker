@@ -97,6 +97,16 @@ const deleteUser = (req, res) => {
     }).catch(e => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error : "Kullanıcı silinirken bir sorunla karşılaşıldı."}));
 };
 
+const changePassword = (req, res) => {
+    req.body.password = passwordToHash(req.body.password);
+    //! UI geldikten sonra şifre karşılaştırmalarına ilişkin kurallar eklenebilir.
+    modify({ _id : req.user?._id }, req.body)
+    .then(updatedUser => {
+        res.status(httpStatus.OK).send(updatedUser);
+    })
+    .catch(() => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error : "Güncelleme işlemi sırasında bir problem oluştu !"}));
+};
+
 module.exports = {
     create,
     index,
@@ -105,4 +115,5 @@ module.exports = {
     resetPassword,
     update,
     deleteUser,
+    changePassword,
 };

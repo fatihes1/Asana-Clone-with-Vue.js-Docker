@@ -13,20 +13,22 @@ const list = () => {
     return User.find({});
 };
 
-const modify = (where, data) => {
+const modify = (where, updateData) => {
     //! Gelen data üzerinde bilgileri filtrelemek için kullanılır.
     //! Joi şu an bunu bizim için yapıyor :')
-    const newData = Object.keys(data).reduce((obj, key) => {
-        if (key !== "password") obj[key] = data[key];
-        return obj;
-    }, {});
+    // const newData = Object.keys(data).reduce((obj, key) => {
+    //     if (key !== "password") obj[key] = data[key];
+    //     return obj;
+    // }, {});
 
-    return User.findOneAndUpdate(where, newData, { new: true });
+    return User.findOneAndUpdate(where, updateData, { new: true });
 };
 
 const remove = (id) => {
     return User.findByIdAndDelete(id)
 };
+
+
 
 
 module.exports = {
