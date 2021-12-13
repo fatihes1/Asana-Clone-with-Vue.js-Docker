@@ -9,7 +9,7 @@ const insert = (data) => {
 const list = (where) => {
     return Project.find(where || {}).populate({
         path: "user_id",
-        select: "full_name email",
+        select: "full_name email profile_image",
     });
 };
 
