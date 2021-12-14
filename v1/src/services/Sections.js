@@ -2,13 +2,16 @@ const Section = require("../models/Sections");
 
 const insert = (data) => {
     // ... kayıt işlemleri yapılacak
-    return new Section(data).Section.save();
+    return new Section(data).save();
 };
 
 const list = (where) => {
     return Section.find(where || {}).populate({
         path: "user_id",
         select: "full_name email profile_image",
+    }).populate({
+        path: "project_id",
+        select: "name",
     });
 };
 
