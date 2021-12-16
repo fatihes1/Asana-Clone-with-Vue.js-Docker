@@ -31,6 +31,7 @@ const updateValidation = Joi.object({
 });
 const commentValidation = Joi.object({
     comment : Joi.string().min(3),
+    _id : Joi.string().min(8),
 });
 
 module.exports = {

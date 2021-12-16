@@ -1,5 +1,6 @@
 const {insert, modify, list, remove, findOne } = require("../services/Tasks");
 const httpStatus = require("http-status");
+const Mongoose = require("mongoose");
 
 const index = (req, res) => {
     if(!req?.params?.projectId) return res.status(httpStatus.BAD_REQUEST).send({ error : "Task bilgisi eksik !" })
@@ -62,10 +63,48 @@ const makeComment = (req, res) => {
     }).catch((e) => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error : "Kayıt sırasında bir problem oluştu." }));
 };
 
+const deleteComment = (req, res) => {
+    findOne({ _id : req.params.id })
+    .then(mainTask => {
+        if(!mainTask) return res.status(httpStatus.NOT_FOUND).send({ message : "Böyle bir kayıt bulunmamaktadır." });
+        mainTask.comments = mainTask.comments.filter((c) => c._id?.toString() !== req.params.commentId);
+        mainTask.save().then(updatedDoc => {
+            return res.status(httpStatus.OK).send(updatedDoc);
+        })
+        .catch((e) => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error : "Kayıt sırasında bir problem oluştu." }));
+    }).catch((e) => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error : "Kayıt sırasında bir problem oluştu." }));
+};
+
+const addSubTask = (req, res) => {
+    //! 1 MainTask çekilir
+    if(!req.params.id) return res.status(httpStatus.BAD_REQUEST).send({ message : "ID Bilgisi eksik !" });
+    findOne({ _id : req.params.id })
+    .then(mainTask => {
+        if(!mainTask) return res.status(httpStatus.NOT_FOUND).send({ message : "Böyle bir kayıt bulunmamaktadır." })
+        //! 2 SubTask create
+        // req.body.user_id = req.user;
+        insert({...req.body, user_id : req.user}).then((subTask) => {
+            //! 3 SubTask refaransı MainTask üzerinde göster ve update et
+            mainTask.sub_tasks.push(subTask)
+            mainTask.save().then(updatedDoc => {
+                return res.status(httpStatus.OK).send(updatedDoc);
+            }).catch((e) => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error : "Kayıt sırasında bir problem oluştu." }));
+        }).catch((e) => {
+            res.status(httpStatus.INTERNAL_SERVER_ERROR).send(e);
+        }).catch((e) => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error : "Kayıt sırasında bir problem oluştu." }));
+    }).catch((e) => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error : "Kayıt sırasında bir problem oluştu." }));
+    //! 4 Kullanıcıya yeni döküman
+
+
+}
+
+
 module.exports = {
     create,
     index,
     update,
     deleteTask,
     makeComment,
+    deleteComment,
+    addSubTask,
 };
