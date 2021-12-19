@@ -3,7 +3,7 @@ const validate = require("../middlewares/validate");
 // validations tanıtımı
 const schemas = require("../validations/Tasks");
 const express = require("express");
-const { create, update, deleteTask, makeComment, deleteComment, addSubTask } = require("../controllers/Tasks");
+const { create, update, deleteTask, makeComment, deleteComment, addSubTask, fetchTask } = require("../controllers/Tasks");
 const authenticateToken = require("../middlewares/authenticate");
 const router = express.Router();
 
@@ -15,6 +15,8 @@ router.route("/:id").delete(authenticateToken, deleteTask);
 router.route("/:id/make-comment").post(authenticateToken, validate(schemas.commentValidation), makeComment);
 router.route("/:id/:commentId").delete(authenticateToken, deleteComment);
 router.route("/:id/add-sub-task").post(authenticateToken, validate(schemas.createValidation), addSubTask);
+router.route("/:id").get(authenticateToken, fetchTask);
+
 
 
 module.exports = router;

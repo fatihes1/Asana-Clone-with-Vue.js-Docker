@@ -36,7 +36,7 @@ const TaskSchema = new Mongoose.Schema(
             }
         ],
         media : [String],
-        sub_taks : [
+        sub_tasks : [
             {
                 type : Mongoose.Types.ObjectId,
                 ref : 'task',
