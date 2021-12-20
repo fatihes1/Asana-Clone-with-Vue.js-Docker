@@ -5,12 +5,12 @@ class Users extends BaseService {
         super(BaseModel);
     }
     // @Override to list method
-    list(where) {
-        return BaseModel.find(where || {}).populate({
-            path : "user_id",
-            select : "full_name email profil_image",
-        });
-    }
+    // list(where) {
+    //     return BaseModel.find(where || {}).populate({
+    //         path : "user_id",
+    //         select : "full_name email profil_image",
+    //     });
+    // }
 }
 
 module.exports = Users;
