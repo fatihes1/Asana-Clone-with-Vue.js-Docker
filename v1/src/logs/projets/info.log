@@ -9,3 +9,4 @@
 {"level":"info","message":{"_id":"61b8d6c8ab6f74706c45b044","createdAt":"2021-12-14T17:39:20.720Z","name":"Bu bir test section","updatedAt":"2021-12-14T17:39:20.720Z","user_id":"61b77a9728edb293c24ca4ad"},"service":"project-service"}
 {"level":"info","message":{"_id":"61b8d8fb4775b311f5315787","createdAt":"2021-12-14T17:48:43.404Z","name":"ERP custemer 1","updatedAt":"2021-12-14T17:48:43.404Z","user_id":"61b77a9728edb293c24ca4ad"},"service":"project-service"}
 {"level":"info","message":{"_id":"61b8d8ff4775b311f5315789","createdAt":"2021-12-14T17:48:47.608Z","name":"ERP custemer 2","updatedAt":"2021-12-14T17:48:47.608Z","user_id":"61b77a9728edb293c24ca4ad"},"service":"project-service"}
+{"level":"info","message":{"_id":"61c0863bd4edc98bce22207f","createdAt":"2021-12-20T13:33:47.806Z","name":"Yiğit için Proje","updatedAt":"2021-12-20T13:33:47.806Z","user_id":"61b77a9728edb293c24ca4ad"},"service":"project-service"}
