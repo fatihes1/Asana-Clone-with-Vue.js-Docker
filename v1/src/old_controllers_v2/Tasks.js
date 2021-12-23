@@ -1,8 +1,8 @@
 const httpStatus = require("http-status");
 const Mongoose = require("mongoose");
 
-const Service = require("../services/Tasks");
-const TaskService = new Service();
+const TaskService = require("../services/TaskService");
+// const TaskService = new Service();
 
 const index = (req, res) => {
     if(!req?.params?.projectId) return res.status(httpStatus.BAD_REQUEST).send({ error : "Task bilgisi eksik !" })

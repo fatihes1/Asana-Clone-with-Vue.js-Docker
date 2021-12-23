@@ -4,11 +4,11 @@ const uuid = require("uuid");
 const eventEmitter = require("../scripts/events/eventEmitter");
 const path = require("path");
 
-const Service = require("../services/Users");
-const UserService = new Service();
+const UserService = require("../services/UserService");
+// const UserService = new Service();
 
-const projectService = require("../services/Projects");
-const ProjectService = new projectService();
+const ProjectService = require("../services/ProjectService");
+// const ProjectService = new projectService();
 
 const create = (req, res) => {
     req.body.password = passwordToHash(req.body.password);
