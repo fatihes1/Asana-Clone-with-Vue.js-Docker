@@ -1,7 +1,7 @@
 const httpStatus = require("http-status");
 const ProjectService = require("../services/ProjectService");
 // const ProjectService = new Service();
-
+const ApiError = require("../errors/ApiError")
 
 class Project {
     index (req, res) {
@@ -19,13 +19,14 @@ class Project {
             res.status(httpStatus.INTERNAL_SERVER_ERROR).send(e);
         });
     }
-    update (req, res) {
+    update (req, res, next) {
         if(!req.params?.id){
           return res.status(httpStatus.BAD_REQUEST).send({
               message : "ID bilgisi eksik !",
           });
         };
         ProjectService.update(req.params?.id, req.body).then(updatedProject => {
+            if (!updatedProject) return next(new ApiError("Böyle bir kayıt bulunmamaktadır", 404));
             res.status(httpStatus.OK).send(updatedProject)
         }).catch(e => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error : "Kayıt sırasında bir problem oluştu."}));
     }
