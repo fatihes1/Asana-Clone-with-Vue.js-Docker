@@ -28,7 +28,7 @@ class Project {
         ProjectService.update(req.params?.id, req.body).then(updatedProject => {
             if (!updatedProject) return next(new ApiError("Böyle bir kayıt bulunmamaktadır", 404));
             res.status(httpStatus.OK).send(updatedProject)
-        }).catch(e => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error : "Kayıt sırasında bir problem oluştu."}));
+        }).catch((e) => next( new ApiError(e?.message)));
     }
     deleteProject (req, res) {
         if(!req.params?.id){

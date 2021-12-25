@@ -2,6 +2,7 @@ const validate = require("../middlewares/validate"); // validate middleware
 const schemas = require("../validations/Users"); // validations tanıtımı
 const express = require("express");
 const authenticateToken = require("../middlewares/authenticate");
+const idChecker = require("../middlewares/idChecker");
 const UserController = require("../controllers/User")
 const router = express.Router();
 
@@ -14,6 +15,6 @@ router.route("/projects").get(authenticateToken, UserController.projectList);
 router.route("/reset-password").post(validate(schemas.resetPasswordValidation), UserController.resetPassword);
 router.route("/change-password").post(authenticateToken, validate(schemas.changePasswordValidation), UserController.changePassword);
 router.route("/update-profile-image").post(authenticateToken,  UserController.updateProfileImage);
-router.route("/:id").delete(authenticateToken, UserController.deleteUser);
+router.route("/:id").delete(idChecker(), authenticateToken, UserController.deleteUser);
 
 module.exports = router;
